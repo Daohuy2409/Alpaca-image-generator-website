@@ -15,9 +15,7 @@
 
 <script setup>
 import { ref } from 'vue';
-const files = require.context('../assets/alpaca', false);
-const fileNames = files.keys().map(key => key.slice(2))
-console.log(fileNames);
+
 var alpaca = ref([
     {name: 'Hair', selected: true},
     {name: 'Ears', selected: false},
