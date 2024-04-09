@@ -7,7 +7,7 @@ h2 {
   font-weight: bold;
 }
 .father {
-  width: 400px; 
+  width: 410px; 
   display: flex;
   flex-wrap: wrap;
 }
@@ -24,7 +24,6 @@ h2 {
   
   border: 1px solid #51bbfc;
   color: #51bbfc;
-  background: #fff;
 }
 .d1:hover {
   border: 3px solid #6f8fc5;

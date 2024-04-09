@@ -9,13 +9,13 @@
         <styleL
             v-if="x.selected"
             :element="x.name"
+            @giveInfo="receiveType"
         />
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-
 var alpaca = ref([
     {name: 'Hair', selected: true},
     {name: 'Ears', selected: false},
@@ -34,5 +34,8 @@ function select (index) {
         }
     });
     alpaca.value[index].selected = true;
+}
+function receiveType(data) {
+    this.$emit('getInfo', data);
 }
 </script>
