@@ -2,3 +2,35 @@
 #app {
   margin-left: 50px;
 }
+h2 {
+  font-weight: bold;
+}
+.father {
+  width: 400px; 
+  display: flex;
+  flex-wrap: wrap;
+}
+.common {
+  display: inline-block;
+  height: 50px;
+  padding: 0 30px 0 30px;
+  margin: 0 10px 10px 0;
+  border-radius: 100px;
+  text-align: center;
+  align-content: center;
+}
+.d1 {
+  
+  border: 1px solid #51bbfc;
+  color: #51bbfc;
+  background: #fff;
+}
+.d1:hover {
+  border: 3px solid #6f8fc5;
+  color: #6e9ae4;
+  cursor: pointer;
+}
+.sel {
+  background: #24509c;
+  color: #fff;
+}
