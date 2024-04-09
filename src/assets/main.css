@@ -1,6 +1,7 @@
 @import './base.css';
 #app {
   margin-left: 50px;
+  margin-top: 20px;
 }
 h2 {
   font-weight: bold;
