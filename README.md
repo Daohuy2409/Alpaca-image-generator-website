@@ -1,17 +1,15 @@
-# DevProjects - Alpaca image generator website
-
-This is an open source project from [DevProjects](http://www.codementor.io/projects). Feedback and questions are welcome!
-Find the project requirements here: [Alpaca image generator website](https://www.codementor.io/projects/web/alpaca-image-generator-website-ce2oc0eus8)
-
+# Introduction
+We love alpacas! It's our mascot, and we'd love for you to have your own alpaca profile photo. With that said, this project is not just about alpacas. Allowing users to generate and download avatars are common in many interactive websites.
 ## Tech/framework used
-Built with ___
+Built with Vue3
 
 ## Screenshots and demo
-Screenshots of your app and/or a link to your live demo
+![alt text](image.png)
 
 ## Installation
-Instructions for other developers on how to install and run your code on their local environment.
+Step 1: Install vue in here https://vuejs.org/guide/quick-start.html.
+Step 2: Download this code.
+Step 3: Open it in VS code or another source code editor.
+Step 4: In terminal, write 'npm install' and press 'Enter' to install dependences.
+Step 5: Then, write 'npm run dev' to run this project.
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
-Most open source projects use the MIT license. Feel free to choose whichever license you prefer.
