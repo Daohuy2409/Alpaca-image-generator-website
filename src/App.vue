@@ -1,6 +1,6 @@
 <template>
   <h1 class="title">ALPACA GENERATOR</h1>
-  <img :src="'/src/alpaca/backgrounds/' + alpaca.background  + '.png'" />
+  <img :src="`/src/alpaca/backgrounds/${alpaca.background}.png`" />
   <img :src="'/src/alpaca/ears/' + alpaca.ears + '.png'" />
   <img :src="'/src/alpaca/leg/' + alpaca.leg + '.png'" />
   <img :src="'/src/alpaca/neck/' + alpaca.neck + '.png'" />
@@ -10,7 +10,10 @@
   <img :src="'/src/alpaca/hair/' + alpaca.hair + '.png'" />
   <img :src="'/src/alpaca/eyes/' + alpaca.eyes + '.png'" />
   <div class="access">
-    <accessorize @getInfo="receiveType"/>
+    <accessorize 
+    :data="alpaca"
+    @getInfo="receiveType"
+    />
   </div>
   
 </template>
@@ -32,8 +35,8 @@ img {
 }
 </style>
 <script setup>
-  import accessorize from './component/accessorize.vue';
-  var alpaca = {
+  import { ref } from 'vue';
+  var alpaca = ref({
     background: 'darkblue50',
     ears: 'default',
     leg: 'default',
@@ -42,15 +45,11 @@ img {
     mouth: 'default',
     hair: 'default',
     eyes: 'default'
-  }
+  });
   var element, type;
   function receiveType(data) {
     element = data.element.toLowerCase();
     type = data.x.toLowerCase();
-  }
-  if (element != null && type != null) {
-    alpaca[element] = type;
-  } else {
-    console.log('No data');
+    alpaca.value[element] = type;
   }
 </script>

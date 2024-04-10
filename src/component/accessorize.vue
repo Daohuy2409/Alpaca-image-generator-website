@@ -9,6 +9,7 @@
         <styleL
             v-if="x.selected"
             :element="x.name"
+            :data="data"
             @giveInfo="receiveType"
         />
     </div>
@@ -26,7 +27,7 @@ var alpaca = ref([
     {name: 'Accessories', selected: false},
     {name: 'Background', selected: false},
     ]);
-
+const props = defineProps(['data']);
 function select (index) {
     alpaca.value.forEach((x, i) => {
         if (i !== index) {

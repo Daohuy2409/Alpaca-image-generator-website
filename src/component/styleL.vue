@@ -2,13 +2,13 @@
     <h2>STYLE</h2>
     <div class="father">
         <div v-for="(x, index) in dict[element]" :key="index">
-            <div @click="addClass(index); $parent.$emit('getInfo', {element, x})" :id="index" class="prop common d1">{{ x }}</div>
+            <div v-if="alpaca[element.toLowerCase()] === x.toLowerCase()" :id="index" class="prop common sel">{{ x }}</div>
+            <div v-else @click="addClass(index); $parent.$emit('getInfo', {element, x})" :id="index" class="prop common d1">{{ x }}</div>
         </div>
     </div>
-    
 </template>
 <script setup>
-    const props = defineProps(['element']);
+    const props = defineProps(['element', 'data']);
     const dict = {
         'Hair': ['Default', 'Bang', 'Curls', 'Elegant', 'Quiff', 'Short'],
         'Ears': ['Default', 'Tilt-backward', 'Tilt-forward'],
@@ -24,7 +24,8 @@
         'Mouth': ['Default', 'Eating', 'Laugh', 'Tongue','Astonished'],
         'Neck': ['Default', 'Bend-backward', 'Bend-forward', 'Thick']
     }
-
+    const alpaca = props.data;
+    
     function addClass(index) {
         const current = document.querySelectorAll('.prop');
         current.forEach((x) => {
