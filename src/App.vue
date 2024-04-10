@@ -25,6 +25,11 @@
 <style scoped>
 img {
   position: absolute;
+  width: 400px;
+  height: 500px;
+}
+#printIt {
+  position: absolute;
   top: 15%;
   width: 400px;
   height: 500px;
