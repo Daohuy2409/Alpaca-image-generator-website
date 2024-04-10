@@ -1,20 +1,24 @@
 <template>
   <h1 class="title">ALPACA GENERATOR</h1>
-  <img :src="`/src/alpaca/backgrounds/${alpaca.background}.png`" />
-  <img :src="'/src/alpaca/ears/' + alpaca.ears + '.png'" />
-  <img :src="'/src/alpaca/leg/' + alpaca.leg + '.png'" />
-  <img :src="'/src/alpaca/neck/' + alpaca.neck + '.png'" />
-  <img :src="'/src/alpaca/accessories/' + alpaca.accessories + '.png'" />
-  <img src="/src/alpaca/nose.png" />
-  <img :src="'/src/alpaca/mouth/' + alpaca.mouth + '.png'" />
-  <img :src="'/src/alpaca/hair/' + alpaca.hair + '.png'" />
-  <img :src="'/src/alpaca/eyes/' + alpaca.eyes + '.png'" />
-  <div class="access">
+  <div ref="printIt">
+    <img :src="`/src/alpaca/backgrounds/${alpaca.background}.png`" />
+    <img :src="'/src/alpaca/ears/' + alpaca.ears + '.png'" />
+    <img :src="'/src/alpaca/leg/' + alpaca.leg + '.png'" />
+    <img :src="'/src/alpaca/neck/' + alpaca.neck + '.png'" />
+    <img :src="'/src/alpaca/accessories/' + alpaca.accessories + '.png'" />
+    <img src="/src/alpaca/nose.png" />
+    <img :src="'/src/alpaca/mouth/' + alpaca.mouth + '.png'" />
+    <img :src="'/src/alpaca/hair/' + alpaca.hair + '.png'" />
+    <img :src="'/src/alpaca/eyes/' + alpaca.eyes + '.png'" />
+  </div>
+  <button  class="download">Download</button>
+  
     <accessorize 
     :data="alpaca"
     @getInfo="receiveType"
+    @random="random"
     />
-  </div>
+  
   
 </template>
 
@@ -46,10 +50,19 @@ img {
     hair: 'default',
     eyes: 'default'
   });
+
   var element, type;
   function receiveType(data) {
     element = data.element.toLowerCase();
     type = data.x.toLowerCase();
     alpaca.value[element] = type;
   }
+  //random pic
+  function random(data) {
+    for (const key in data) {
+      alpaca.value[key.toLowerCase()] = data[key].toLowerCase();
+    }
+  }
+
+  //download
 </script>

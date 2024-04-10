@@ -1,18 +1,25 @@
 <template>
-    <h2>STYLE</h2>
-    <div class="father">
-        <div v-for="(x, index) in dict[element]" :key="index">
-            <div v-if="alpaca[element.toLowerCase()] === x.toLowerCase()" :id="index" class="prop common sel">{{ x }}</div>
-            <div v-else @click="addClass(index); $parent.$emit('getInfo', {element, x})" :id="index" class="prop common d1">{{ x }}</div>
+    <div class="styl">
+        <h2>STYLE</h2>
+        <div class="father">
+            <div v-for="(x, index) in dict[element]" :key="index">
+                <div v-if="alpaca[element.toLowerCase()] === x.toLowerCase()" :id="index" class="prop common sel">{{ x }}</div>
+                <div v-else @click="addClass(index); $parent.$emit('getInfo', {element, x})" :id="index" class="prop common d1">{{ x }}</div>
+            </div>
         </div>
     </div>
+    <button @click="random(); $parent.$emit('random', dataset)" class="random">Random</button>
 </template>
+<style>
+
+
+</style>
 <script setup>
     const props = defineProps(['element', 'data']);
     const dict = {
         'Hair': ['Default', 'Bang', 'Curls', 'Elegant', 'Quiff', 'Short'],
         'Ears': ['Default', 'Tilt-backward', 'Tilt-forward'],
-        'Accessories': ['Earings', 'Glasses', 'Flower', 'Headphong'],
+        'Accessories': ['Earings', 'Glasses', 'Flower', 'Headphone'],
         'Background': ['Blue50', 'Blue60', 'Blue70', 
                        'Darkblue30', 'Darkblue50', 'Darkblue70', 
                        'Green50', 'Green60', 'Green70', 
@@ -36,5 +43,13 @@
         });
         var element = document.getElementById(index);
         element.className = element.className.replace('d1', 'sel');
+    }
+
+    //pick random
+    var dataset = {};
+    function random() {
+        for (const key in dict) {
+            dataset[key] = dict[key][Math.floor(Math.random() * dict[key].length)];
+        }
     }
 </script>
