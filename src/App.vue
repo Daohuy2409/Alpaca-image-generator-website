@@ -1,6 +1,6 @@
 <template>
   <h1 class="title">ALPACA GENERATOR</h1>
-  <div ref="printIt">
+  <div id="printIt">
     <img :src="`/src/alpaca/backgrounds/${alpaca.background}.png`" />
     <img :src="'/src/alpaca/ears/' + alpaca.ears + '.png'" />
     <img :src="'/src/alpaca/leg/' + alpaca.leg + '.png'" />
@@ -11,7 +11,7 @@
     <img :src="'/src/alpaca/hair/' + alpaca.hair + '.png'" />
     <img :src="'/src/alpaca/eyes/' + alpaca.eyes + '.png'" />
   </div>
-  <button  class="download">Download</button>
+  <button @click.prevent="printThis" class="download">Download</button>
   
     <accessorize 
     :data="alpaca"
@@ -40,6 +40,7 @@ img {
 </style>
 <script setup>
   import { ref } from 'vue';
+  import html2canvas from "html2canvas";
   var alpaca = ref({
     background: 'darkblue50',
     ears: 'default',
@@ -65,4 +66,25 @@ img {
   }
 
   //download
+  const printThis = async () => {
+    console.log("printing..");
+    const el = document.getElementById("printIt");
+
+    const options = {
+      type: "dataURL",
+    };
+    const printCanvas = await html2canvas(el, options);
+
+    const link = document.createElement("a");
+    link.setAttribute("download", "download.png");
+    link.setAttribute(
+      "href",
+      printCanvas
+        .toDataURL("image/png")
+        .replace("image/png", "image/octet-stream")
+    );
+    link.click();
+
+    console.log("done");
+    }
 </script>
